@@ -1,5 +1,5 @@
 
-# 🌡️ Arduino Temperature Control Library
+# Arduino Temperature Control Library
 
 [![Arduino CI](https://github.com/milesburton/Arduino-Temperature-Control-Library/workflows/Arduino%20CI/badge.svg)](https://github.com/marketplace/actions/arduino_ci)
 [![Arduino-lint](https://github.com/milesburton/Arduino-Temperature-Control-Library/actions/workflows/arduino-lint.yml/badge.svg)](https://github.com/milesburton/Arduino-Temperature-Control-Library/actions/workflows/arduino-lint.yml)
@@ -13,7 +13,7 @@
 A robust and feature-complete Arduino library for Maxim Temperature Integrated Circuits.
 
 
-## 📌 Supported Devices
+## Supported Devices
 
 |  device    |   power   |  notes  |
 |:-----------|:---------:|:--------|
@@ -24,7 +24,7 @@ A robust and feature-complete Arduino library for Maxim Temperature Integrated C
 |  MAX31820  |   3 V ⚠️    |
 |  MAX31850/1  |   3-3.7V ⚠️  |  thermocouple
 
-## 🚀 Installation
+## Installation
 
 ### Using Arduino IDE Library Manager (Recommended)
 1. Open Arduino IDE
@@ -39,7 +39,7 @@ A robust and feature-complete Arduino library for Maxim Temperature Integrated C
 3. Select the downloaded ZIP file
 4. Repeat steps 1-3 for the required "OneWire" library
 
-## 📝 Basic Usage
+## Basic Usage
 
 1. **Hardware Setup**
    - Connect a 4k7 Ω pull-up resistor between the 1-Wire data line and 5V power. Note this applies to the Arduino platform, for ESP32 and 8266 you'll need to adjust the resistor value accordingly.
@@ -75,7 +75,7 @@ A robust and feature-complete Arduino library for Maxim Temperature Integrated C
    }
    ```
 
-## 🛠️ Advanced Features
+## Advanced Features
 
 - Multiple sensors on the same bus
 - Temperature conversion by address (`getTempC(address)` and `getTempF(address)`)
@@ -91,11 +91,7 @@ You can slim down the code by defining the following at the top of DallasTempera
 #define REQUIRESALARMS   // Use if you need alarm functionality
 ```
 
-## 📚 Additional Documentation
-
-Visit our [Wiki](https://www.milesburton.com/w/index.php/Dallas_Temperature_Control_Library) for detailed documentation.
-
-## 🔧 Library Development
+## Library Development
 
 If you want to contribute to the library development:
 
@@ -115,7 +111,7 @@ The project includes a development container configuration for VS Code that prov
 
    > Note: Currently compiling against arduino:avr:uno environment
 
-## ✨ Credits
+## Credits
 
 - Original development by Miles Burton <mail@milesburton.com>
 - Multiple sensor support by Tim Newsome <nuisance@casualhacker.net>
@@ -124,6 +120,6 @@ The project includes a development container configuration for VS Code that prov
 
 ## 📄 License
 
-MIT License | Copyright (c) 2025 Miles Burton
+MIT License | Copyright (c) 2026 Miles Burton
 
 Full license text available in [LICENSE](LICENSE) file.
