@@ -19,7 +19,7 @@
 #ifdef __STM32F1__
 #include <OneWireSTM.h>
 #else
-#include <OneWire.h>
+#include "OneWire.h"
 #endif
 
 // Constants for device models
