@@ -1,5 +1,5 @@
-#ifndef DallasTemperature_h
-#define DallasTemperature_h
+#ifndef DallasTemperatureKP_h
+#define DallasTemperatureKP_h
 
 #define DALLASTEMPLIBVERSION "4.0.5"
 
@@ -19,7 +19,7 @@
 #ifdef __STM32F1__
 #include <OneWireSTM.h>
 #else
-#include "OneWire.h"
+#include "OneWireKP.h"
 #endif
 
 // Constants for device models
@@ -130,6 +130,11 @@ public:
     void setAutoSaveScratchPad(bool);
     bool getAutoSaveScratchPad(void);
 
+    // PIO
+    // returns PIO
+    int8_t readPIOStatusIndex(uint8_t deviceIndex);
+    int8_t readPIOStatus(const uint8_t* deviceAddress);
+
 #if REQUIRESALARMS
     typedef void AlarmHandler(const uint8_t*);
     void setHighAlarmTemp(const uint8_t*, int8_t);
@@ -197,4 +202,4 @@ private:
 #endif
 };
 
-#endif // DallasTemperature_h
+#endif // DallasTemperatureKP_h

@@ -1,4 +1,4 @@
-#include "DallasTemperature.h"
+#include "DallasTemperatureKP.h"
 
 #if ARDUINO >= 100
 #include "Arduino.h"
@@ -85,14 +85,14 @@ void DallasTemperature::setPullupPin(uint8_t _pullupPin) {
 
 void DallasTemperature::begin(void) {
     DeviceAddress deviceAddress;
-    
+    char buffer[40];
+    char *pbuf = &buffer[0];
     for (uint8_t retry = 0; retry < MAX_INITIALIZATION_RETRIES; retry++) {
         _wire->reset_search();
         devices = 0;
         ds18Count = 0;
         
         delay(INITIALIZATION_DELAY_MS);
-        
         while (_wire->search(deviceAddress)) {
             if (validAddress(deviceAddress)) {
                 devices++;
@@ -600,6 +600,35 @@ int32_t DallasTemperature::calculateTemperature(const uint8_t* deviceAddress, ui
 
     return fpTemperature;
 }
+
+
+// Fetch PIO for device index
+int8_t DallasTemperature::readPIOStatusIndex(uint8_t deviceIndex){
+
+    DeviceAddress deviceAddress;
+    if (!getAddress(deviceAddress, deviceIndex)){
+        return DEVICE_DISCONNECTED_C;
+    }
+
+    return readPIOStatus((uint8_t*)deviceAddress);
+
+}
+
+// returns PIO
+int8_t DallasTemperature::readPIOStatus(const uint8_t* deviceAddress){
+    uint8_t pio = 0xff;
+    //if device is correct type send commands to read PIO
+    //if device is not correct type return 0
+    if (deviceAddress[0] == DS28EA00MODEL){
+        _wire->select(deviceAddress);
+        _wire->write(0xF5, parasite);
+        delayMicroseconds(200);
+        pio = _wire->read();
+        _wire->reset();
+    }
+    return pio;
+}
+
 
 #if REQUIRESALARMS
 
